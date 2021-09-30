@@ -6,7 +6,7 @@
 # Send your script to your github repo, and submit the URL with screenshot on Blackboard
 
 #Ensure that the script is run as root to avoid errors with sed and hostnamectl
-test "`whoami`" = "root" || echo "Script needs to be run as root" && exit 1
+test "`whoami`" = "root" || { echo "Script needs to be run as root"; exit 1; }
 
 # Get the current hostname using the hostname command and save it in a variable
 currenthostname=$(hostname)
@@ -29,4 +29,4 @@ test $(cat /etc/hosts | grep $currenthostname | awk '{print $2}') = $currenthost
 #     tell the user you changed the current hostname and they should reboot to make sure the new name takes full effect
 #e.g. hostnamectl set-hostname $newname
 test $currenthostname = $newhostname || hostnamectl set-hostname $newhostname
-echo "The hostname has been changed to $newhostname. You should reboot now for the changes to take full effect"
+echo "The hostname has been changed to $newhostname. You should reboot now for the changes to take full effect."
