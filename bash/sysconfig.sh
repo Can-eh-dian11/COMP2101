@@ -31,7 +31,7 @@ function displayhelp {
 cat <<EOF
 The following options can be added to specify the desired output
 
--h: Display help information
+-h|--help: Display help information
 --host: Host information
 --domain: Domain information
 --ipconfig: IP interface details
