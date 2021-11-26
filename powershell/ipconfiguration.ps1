@@ -1,0 +1,1 @@
+﻿Get-CimInstance win32_networkadapterconfiguration | Where-Object IPEnabled -eq True | Format-Table -AutoSize Description, Index, IPAddress, IPSubnet, DNSDomain, DNSServerSearchOrder
