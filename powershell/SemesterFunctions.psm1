@@ -47,3 +47,17 @@ function Get-GraphicsInformation(){
     Get-CimInstance win32_videocontroller | Format-List @{Name="Vendor";Expression={$_.AdapterCompatibility}}, Description, 
     @{Name="Resolution";Expression={"$($_.CurrentHorizontalResolution) x $($_.CurrentVerticalResolution)"}}
 }
+
+function welcome{
+    write-output "Welcome to planet $env:computername Overlord $env:username"
+    $now = get-date -format 'HH:MM tt on dddd'
+    write-output "It is $now."
+}
+
+function get-cpuinfo{
+    Get-CimInstance cim_processor | Format-List Manufacturer, Name, NumberOfCores, CurrentClockSpeed, MaxClockSpeed
+}
+
+function get-mydisks{
+    Get-Disk | Format-Table -AutoSize Manufacturer, Model, SerialNumber, FirmwareVersion, Size
+}
